@@ -51,6 +51,7 @@ static Command cmds[] = {
 	{ "^bd(e|el|ele|elet|elete)?!?$", cmd_bdelete,    false },
 	{ "^e(d|di|dit)?!?$",             cmd_edit,       false },
 	{ "^new$",                        cmd_new,        false },
+	{ "^norm(al)?$",                  cmd_norm,       false },
 	{ "^o(p|pe|pen)?$",               cmd_open,       false },
 	{ "^qa(l|ll)?!?$",                cmd_qall,       false },
 	{ "^q(u|ui|uit)?!?$",             cmd_quit,       false },

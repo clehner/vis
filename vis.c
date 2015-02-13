@@ -524,6 +524,8 @@ static bool cmd_write(Filerange*, const char *argv[]);
  * associate the new name with the buffer. further :w commands
  * without arguments will write to the new filename */
 static bool cmd_saveas(Filerange*, const char *argv[]);
+/* execute a command in normal mode as if they were keystrokes  */
+static bool cmd_norm(Filerange*, const char *argv[]);
 
 static void action_reset(Action *a);
 static void switchmode_to(Mode *new_mode);
@@ -1831,6 +1833,14 @@ static void settings_apply(const char **settings) {
 		if (tmp)
 			exec_cmdline_command(tmp);
 		free(tmp);
+	}
+}
+
+static bool cmd_norm(Filerange *range, const char *argv[]) {
+	for (char *c = (char *)argv[1]; *c; c++) {
+		ungetch((int)*c);
+		Key key = getkey();
+		keypress(&key);
 	}
 }
 
